@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Laboratorio</th>
+            <th>Fecha Fabricación</th>
+            <th>Fecha Vencimiento</th>
+            <th>Cantidad Disponible</th>
+            <th>Valor Unitario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of medicamento">
+            <td>{{m.id}}</td>
+            <td>{{m.nombre}}</td>
+            <td>{{m.laboratorio}}</td>
+            <td>{{m.fechaFabricacion}}</td>
+            <td>{{m.fechaVencimiento}}</td>
+            <td>{{m.cantidadStock}}</td>
+            <td>{{m.valorUnitario}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -73,5 +74,13 @@ public class VentaServiceimpl implements VentaService {
             Venta savedVenta = ventaRepository.save(venta);
             return ResponseEntity.ok(modelMapper.map(savedVenta, VentaDto.class));
         }
+    }
+
+    @Override
+    public List<VentaDto> findByFecha(Instant fechaInicial, Instant fechaFinal) {
+        List<Venta> ventas = ventaRepository.findVentasByFechaHoraBetween(fechaInicial, fechaFinal);
+        return  ventas.stream()
+                .map(venta -> modelMapper.map(venta, VentaDto.class))
+                .collect(Collectors.toList());
     }
 }
